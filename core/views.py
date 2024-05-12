@@ -24,8 +24,10 @@ def sign_up(request):
         
         if form.is_valid():
             form.save()
+            print('form submitted')
             return redirect('/login/')
     else:
+        print('form not submited')
         form = SignUpForm()
     
     return render(request,'core/signup.html',{'form':form})
