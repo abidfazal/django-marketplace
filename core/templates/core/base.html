@@ -17,20 +17,30 @@
              class=' text-lg font-semibold hover:text-gray-500 '>
              Browse</a>
              {% if request.user.is_authenticated %}
-             <a href='#' class='px-6 py-5 text-lg font-semibold 
+             <a href='#' class='px-6 py-3 text-lg font-semibold 
              bg-teal-500 text-white rounded-xl hover:bg-teal-700'>Inbox</a>
-             <a href='{% url 'dashboard:myitems' %}' class='px-6 py-5 text-lg font-semibold 
+             <a href='{% url 'dashboard:myitems' %}' class='px-6 py-3 text-lg font-semibold 
              bg-gray-500 text-white rounded-xl hover:bg-gray-700'>Dashboard</a>
         
              {%else%}
-             <a href='{% url 'core:signup' %}' class='px-6 py-5 text-lg font-semibold 
+             <a href='{% url 'core:signup' %}' class='px-6 py-3 text-lg font-semibold 
              bg-teal-500 text-white rounded-xl hover:bg-teal-700'>Sign up</a>
-             <a href='{%url 'core:login' %}' class='px-6 py-5 text-lg font-semibold 
+             <a href='{%url 'core:login' %}' class='px-6 py-3 text-lg font-semibold 
              bg-gray-500 text-white rounded-xl hover:bg-gray-700'>Log in</a>
         
             {%endif%}
             </div>
     </nav>
+    {% if request.user.is_authenticated %}
+    <nav class=' px-6 flex justify-between items-end border-b border-gray-200'>
+        <a href="/"></a>
+        <div class='space-x-6'>
+            <a href='{% url 'core:logout' %}' class=' text-lg font-semibold 
+             text-blue-600 underline rounded-xl hover:text-blue-900'>Logout</a>           
+        </div>
+    </nav>
+     {%endif%}
+    </header>
     <div class ='px-6 py-6'>
         {% block content %}{% endblock  %}
     </div>
